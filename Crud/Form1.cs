@@ -52,7 +52,7 @@ namespace Crud
         {
             con.Open();
             
-            SqlCommand command = new SqlCommand("insert into ProductInfo_Tab values('" + int.Parse(textBox1.Text) + "', '" + textBox2.Text + "', '" + textBox3.Text + "', '" + comboBox1.Text + "', getdate())", con);
+            SqlCommand command = new SqlCommand("insert into ProductInfo_Tab values('" + int.Parse(textBox1.Text) + "', '" + textBox2.Text + "', '" + textBox3.Text + "', '" + comboBox1.Text + "', getdate(), getdate())", con);
             command.ExecuteNonQuery();
             MessageBox.Show("Successfully Inserted");
             con.Close();
@@ -107,6 +107,11 @@ namespace Crud
             con.Close();
             MessageBox.Show("Successfully updated");
             BindData();
+        }
+
+        private void label5_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }
