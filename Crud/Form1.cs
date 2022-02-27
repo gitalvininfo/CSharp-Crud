@@ -98,5 +98,15 @@ namespace Crud
         {
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            con.Open();
+            SqlCommand command = new SqlCommand("update ProductInfo_Tab set ItemName = '" + textBox2.Text + "', Design = '" + textBox3.Text + "', Color = '" + comboBox1.Text + "', UpdateDate = getdate() where ProductId = '" + int.Parse(textBox1.Text) + "'", con);
+            command.ExecuteNonQuery();
+            con.Close();
+            MessageBox.Show("Successfully updated");
+            BindData();
+        }
     }
 }
