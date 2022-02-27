@@ -102,7 +102,7 @@ namespace Crud
         private void button2_Click(object sender, EventArgs e)
         {
             con.Open();
-            SqlCommand command = new SqlCommand("update ProductInfo_Tab set ItemName = '" + textBox2.Text + "', Design = '" + textBox3.Text + "', Color = '" + comboBox1.Text + "', UpdateDate = getdate() where ProductId = '" + int.Parse(textBox1.Text) + "'", con);
+            SqlCommand command = new SqlCommand("update ProductInfo_Tab set ItemName = '" + textBox2.Text + "', Design = '" + textBox3.Text + "', Color = '" + comboBox1.Text + "', UpdateDate = getdate() where ProductID = '" + int.Parse(textBox1.Text) + "'", con);
             command.ExecuteNonQuery();
             con.Close();
             MessageBox.Show("Successfully updated");
@@ -112,6 +112,26 @@ namespace Crud
         private void label5_Click_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            con.Open();
+            SqlCommand command = new SqlCommand("Delete ProductInfo_Tab where ProductID = '" + int.Parse(textBox1.Text) + "'", con);
+            command.ExecuteNonQuery();
+            con.Close();
+            MessageBox.Show("Successfully deleted.");
+            BindData();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            SqlCommand command = new SqlCommand("select * from ProductInfo_Tab where ProductID = '" + int.Parse(textBox1.Text) + "'", con);
+            SqlDataAdapter sd = new SqlDataAdapter(command);
+
+            DataTable dt = new DataTable();
+            sd.Fill(dt);
+            dataGridView1.DataSource = dt;
         }
     }
 }
